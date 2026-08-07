@@ -9,7 +9,6 @@ Custom extension repository for [Tachimanga](https://tachimanga.app/).
 | Manga18fx | English | Yes | https://manga18fx.com |
 | Manga18.Club | English | Yes | https://manga18.club |
 | 漫小肆韓漫 (Ikanwzd) | 中文 | Yes | https://www.ikanwzd.cc |
-| 韩漫库 (Se8) | 中文 | Yes | https://se8.us |
 | 18漫畫 (EighteenMH) | 中文 | Yes | https://18mh.org |
 | 巴卡漫画 (Bakamh) | 中文 | Yes | https://bakamh.com |
 | 包子漫画 (Baozi Manhua) | 中文 | No | https://www.baozimh.com |
@@ -24,9 +23,8 @@ Custom extension repository for [Tachimanga](https://tachimanga.app/).
 | 紳士漫畫 (WNACG) | 中文 | Yes | https://www.wnacg.com |
 | 再漫画 (Zaimanhua) | 中文 | No | https://www.zaimanhua.com |
 | 禁漫天堂 (Jinmantiantang) | 中文 | Yes | https://18comic.vip |
-| pawo漫画 (Pawomh) | 中文 | Yes | https://www.pawomh4.cc |
+| pawo漫画 (Pawomh) | 中文 | Yes | https://pawomh1.cc |
 | Temple Scan | Español | Yes | https://templescanesp.net |
-| NewToki / ManaToki | 한국어 | Yes | https://newtoki469.com |
 | Komikindo.live | English | Yes | https://komikindo.live |
 | Mangaforfree.com | English | Yes | https://mangaforfree.com |
 
@@ -61,7 +59,6 @@ After installation, go to **Browse → Sources**, select the source you installe
 | Manga18fx | English | 是 | https://manga18fx.com |
 | Manga18.Club | English | 是 | https://manga18.club |
 | 漫小肆韓漫 (Ikanwzd) | 中文 | 是 | https://www.ikanwzd.cc |
-| 韩漫库 (Se8) | 中文 | 是 | https://se8.us |
 | 18漫畫 (EighteenMH) | 中文 | 是 | https://18mh.org |
 | 巴卡漫画 (Bakamh) | 中文 | 是 | https://bakamh.com |
 | 包子漫画 (Baozi Manhua) | 中文 | 否 | https://www.baozimh.com |
@@ -76,9 +73,8 @@ After installation, go to **Browse → Sources**, select the source you installe
 | 紳士漫畫 (WNACG) | 中文 | 是 | https://www.wnacg.com |
 | 再漫画 (Zaimanhua) | 中文 | 否 | https://www.zaimanhua.com |
 | 禁漫天堂 (Jinmantiantang) | 中文 | 是 | https://18comic.vip |
-| pawo漫画 (Pawomh) | 中文 | 是 | https://www.pawomh4.cc |
+| pawo漫画 (Pawomh) | 中文 | 是 | https://pawomh1.cc |
 | Temple Scan | Español | 是 | https://templescanesp.net |
-| NewToki / ManaToki | 한국어 | 是 | https://newtoki469.com |
 | Komikindo.live | English | 是 | https://komikindo.live |
 | Mangaforfree.com | English | 是 | https://mangaforfree.com |
 
