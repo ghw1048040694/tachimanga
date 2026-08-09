@@ -13,22 +13,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Diagnose APK signatures
+      - name: Summarize APK signing fingerprints
         shell: bash
         run: |
           set -u
           APKSIGNER="$(find "${ANDROID_HOME}/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           echo "Using: $APKSIGNER"
-          count=0
+          : > fingerprints.tsv
           for apk in repo/apk/*.apk; do
-            echo "===== $(basename "$apk") ====="
-            "$APKSIGNER" verify --verbose --print-certs "$apk" 2>&1 || true
-            echo "-- META-INF signature entries --"
-            unzip -l "$apk" 2>/dev/null | grep -Ei 'META-INF/.*\.(RSA|DSA|EC|SF)$' || true
-            echo "-- keytool --"
-            keytool -printcert -jarfile "$apk" 2>&1 || true
-            count=$((count + 1))
-            if [ "$count" -ge 5 ]; then
-              break
+            name="$(basename "$apk")"
+            output="$($APKSIGNER verify --print-certs "$apk" 2>&1 || true)"
+            fp="$(printf '%s\n' "$output" | sed -n 's/.*certificate SHA-256 digest: //p' | head -n 1)"
+            if [ -n "$fp" ]; then
+              printf '%s\t%s\n' "$name" "$fp" | tee -a fingerprints.tsv
+            else
+              printf '%s\tUNSIGNED_OR_UNVERIFIABLE\n' "$name" | tee -a fingerprints.tsv
             fi
           done
+          echo "===== SUMMARY ====="
+          cut -f2 fingerprints.tsv | sort | uniq -c | sort -nr
