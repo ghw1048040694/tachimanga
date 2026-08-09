@@ -1,0 +1,36 @@
+name: Extract APK signing fingerprints
+
+on:
+  push:
+    paths:
+      - '.github/workflows/extract-apk-signing-fingerprint.yml'
+  workflow_dispatch:
+
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract APK certificate fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          APKSIGNER="$(find "${ANDROID_HOME}/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          if [ -z "$APKSIGNER" ]; then
+            echo "apksigner not found" >&2
+            exit 1
+          fi
+          echo "Using: $APKSIGNER"
+          : > fingerprints.txt
+          for apk in repo/apk/*.apk; do
+            fp="$($APKSIGNER verify --print-certs "$apk" | awk -F': ' '/Signer #1 certificate SHA-256 digest/ {print $2; exit}')"
+            if [ -z "$fp" ]; then
+              echo "Could not read signer from $apk" >&2
+              exit 1
+            fi
+            printf '%s %s\n' "$(basename "$apk")" "$fp" | tee -a fingerprints.txt
+          done
+          echo "--- UNIQUE SHA-256 SIGNING FINGERPRINTS ---"
+          awk '{print $NF}' fingerprints.txt | sort -u
